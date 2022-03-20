@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {CoffeeTea} from './coffee-tea.model';
 
 @model()
 export class Cart extends Entity {
@@ -25,6 +26,9 @@ export class Cart extends Entity {
     type: 'string',
   })
   userId?: string;
+
+  @hasMany(() => CoffeeTea)
+  coffeeTeaCart: CoffeeTea[];
 
   constructor(data?: Partial<Cart>) {
     super(data);
